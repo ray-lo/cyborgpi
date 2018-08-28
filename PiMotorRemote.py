@@ -38,12 +38,12 @@ class RemoteCyborgPi(object):
 myPi = RemoteCyborgPi()
 while 1:
     myPi.left()
-    time.sleep(1000)
+    time.sleep(2)
     myPi.right()
-    time.sleep(1000)
+    time.sleep(2)
     myPi.forward()
-    time.sleep(1000)
+    time.sleep(2)
     myPi.reverse()
-    time.sleep(1000)
+    time.sleep(2)
     myPi.stop()
 
