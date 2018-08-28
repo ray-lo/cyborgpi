@@ -5,8 +5,8 @@ import pygame
 class RemoteCyborgPi(object):
 
     def __init__(self):
-        self.leftMotor = PiMotor.motor("MOTOR1", 1)
-        self.rightMotor = PiMotor.motor("MOTOR2", 2)
+        self.leftMotor = PiMotor.Motor("MOTOR1", 1)
+        self.rightMotor = PiMotor.Motor("MOTOR2", 2)
 
     def forward(self):
         self.leftMotor.forward(100)
