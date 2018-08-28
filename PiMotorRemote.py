@@ -35,7 +35,7 @@ class RemoteCyborgPi(object):
 
 
 
-myPi = RemoteCyborgPi.__init__()
+myPi = RemoteCyborgPi()
 while 1:
     myPi.left()
     time.sleep(1000)
