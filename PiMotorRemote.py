@@ -11,6 +11,9 @@ class RemoteCyborgPi(object):
     def forward(self):
         self.leftMotor.forward(100)
         self.rightMotor.forward(100)
+    def reverse(self):
+        self.leftMotor.reverse(100)
+        self.rightMotor.reverse(100)
 
     def rotateleft(self):
         self.leftMotor.reverse(100)
