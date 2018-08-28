@@ -1,6 +1,7 @@
 import PiMotor
 import time
 
+
 def run():
     '''Procedure to test all the motor pins
 
