@@ -55,9 +55,10 @@ def testRun():
 
 def main(screen):
     key = ''
-    while 1:
+    while key != 'q':
         key = screen.getkey()
-        print(key)
+        screen.addstr(0, 0, 'key: {:<10}'.format(key))
+
 
 
 curses.wrapper(main)
