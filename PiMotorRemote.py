@@ -1,6 +1,6 @@
 import PiMotor
 import time
-import pygame
+import curses
 
 class RemoteCyborgPi(object):
 
@@ -37,21 +37,30 @@ class RemoteCyborgPi(object):
         self.rightMotor.stop()
 
 
+def testRun():
+    while 1:
+        myPi.left()
+        time.sleep(2)
+        myPi.right()
+        time.sleep(2)
+        myPi.rotateLeft()
+        time.sleep(2)
+        myPi.rotateRight()
+        time.sleep(2)
+        myPi.forward()
+        time.sleep(2)
+        myPi.reverse()
+        time.sleep(2)
+        myPi.stop()
+
+def main(screen):
+    key = ''
+    while 1:
+        key = screen.getkey()
+        print(key)
+
+
+curses.wrapper(main)
 
 
 myPi = RemoteCyborgPi()
-while 1:
-    myPi.left()
-    time.sleep(2)
-    myPi.right()
-    time.sleep(2)
-    myPi.rotateLeft()
-    time.sleep(2)
-    myPi.rotateRight()
-    time.sleep(2)
-    myPi.forward()
-    time.sleep(2)
-    myPi.reverse()
-    time.sleep(2)
-    myPi.stop()
-
