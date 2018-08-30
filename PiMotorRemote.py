@@ -58,7 +58,7 @@ def main(screen):
     key = ''
     while key != 'q':
         key = screen.getkey()
-        screen.addstr(0, 0, 'key: {:<10}'.format(key))
+        #screen.addstr(0, 0, 'key: {:<10}'.format(key))
 
 
 
