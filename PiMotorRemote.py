@@ -61,7 +61,7 @@ def main(screen):
         key = screen.getkey()
         if key == "KEY_UP":
             myPi.forward()
-        if key == "KEY_DOWN":
+        elif key == "KEY_DOWN":
             myPi.reverse()
         else:
             myPi.stop()
