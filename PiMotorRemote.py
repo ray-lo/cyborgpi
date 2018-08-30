@@ -6,7 +6,7 @@ class RemoteCyborgPi(object):
 
     def __init__(self):
         self.rightMotor = PiMotor.Motor("MOTOR1", 1)
-        self.leftMotor = PiMotor.Motor("MOTOR2", 1)
+        self.leftMotor = PiMotor.Motor("MOTOR2", 2)
 
 
     def forward(self):
