@@ -54,7 +54,7 @@ def testRun():
         myPi.stop()
 
 def main(screen):
-    screen.nodelay(True)
+
     key = ''
     while key != 'q':
         key = screen.getkey()
