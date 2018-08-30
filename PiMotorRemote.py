@@ -59,9 +59,9 @@ def main(screen):
     key = ''
     while key != 'q':
         key = screen.getkey()
-        if key == "UP":
+        if key == "KEY__UP":
             myPi.forward()
-        if key == "DOWN":
+        if key == "KEY_DOWN":
             myPi.reverse()
         else:
             myPi.stop()
