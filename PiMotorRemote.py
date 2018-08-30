@@ -5,8 +5,8 @@ import curses
 class RemoteCyborgPi(object):
 
     def __init__(self):
-        self.rightMotor = PiMotor.Motor("MOTOR1", 2)
-        self.leftMotor = PiMotor.Motor("MOTOR2", 1)
+        self.rightMotor = PiMotor.Motor("MOTOR2", 1)
+        self.leftMotor = PiMotor.Motor("MOTOR1", 2)
 
 
     def forward(self):
