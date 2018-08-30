@@ -63,6 +63,15 @@ def main(screen):
             myPi.forward()
         elif key == "KEY_DOWN":
             myPi.reverse()
+
+        elif key == "KEY_LEFT":
+            myPi.left()
+        elif key == "KEY_RIGHT":
+            myPi.right()
+        elif key == "z":
+            myPi.rotateLeft()
+        elif key == "x":
+            myPi.rotateRight()
         else:
             myPi.stop()
 
