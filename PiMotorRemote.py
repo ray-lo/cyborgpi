@@ -54,10 +54,19 @@ def testRun():
         myPi.stop()
 
 def main(screen):
+    myPi = RemoteCyborgPi()
 
     key = ''
     while key != 'q':
         key = screen.getkey()
+        if key == "UP":
+            myPi.forward()
+        if key == "DOWN":
+            myPi.reverse()
+        else:
+            myPi.stop()
+
+
         #screen.addstr(0, 0, 'key: {:<10}'.format(key))
 
 
@@ -65,4 +74,4 @@ def main(screen):
 curses.wrapper(main)
 
 
-myPi = RemoteCyborgPi()
+
