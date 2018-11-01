@@ -1,0 +1,8 @@
+The Cyborg's main brain is of course the Raspberry Pi, whose hostname is CyborgPi.
+
+The Debian system on there is set up to automatically connect to our own wifi router (the Apple AirPort Base), named Cyborg_Airport_Express. The password is "RamanLab".
+When your computer is connected to the same Cyborg_Airport_Express router, you can then shell into the Pi via SSH:
+	1) If you have a Mac or Linux system: simply type "ssh pi@cyborgpi.local" into terminal. The password is "RamanLab".
+	2) If you have a Windows machine, install Putty. Use a tool like Advanced IP Scanner to figure out the IP Address of the CyborgPi (cyborgpi.local doesn't work on Windows machine as a hostname, unfortunately.)
+
+Once you are connected via ssh, you have control of the pi over terminal. Go to the cyborgpi folder and run PiMotorRemote.py, for instance, and you can now remote control the Cyborg with the arrow keys.
