@@ -1,6 +1,8 @@
 # cyborgpi
 
-**09/20/2018**: It turns out the Pi will apepar to be on if the battery is low. SSH connection gets quite bad when the battery is low. If there is connectivity issues, change/charge batteries first.
+**09/20/2018**: It turns out that Pi will apepar to be on if the battery is low. SSH connection gets quite bad when the battery is low. If there is connectivity issues, change/charge batteries first.
+
+UPDATE on battery situation: bought actually batteries (where the capacity rating is actually within the realm of reality)and chargers (can display how charged up the battery is; I would look at the voltage instead of capacity. These are 3.7v batteries so 4.2v is pretty well-charged up). The battery is called Orbotronic 3400mAh Li-Ion 3.7v rechargeable battery. The charger says XTar VC2 on it.
 
 Currently debugging issues regardig why the car wont' track straight.
 
