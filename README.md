@@ -14,3 +14,7 @@ I asked Deb to buy 5 SparkFun QRE1113 (digital) sensors for me. They are adverti
   https://www.raspberrypi.org/forums/viewtopic.php?f=37&t=225960&sid=bfba82c972c4f15f31b83be62f50bac6
   
 **11/02/2018** I have decided to use 5 sensors and use a PID control for the line following logic.
+
+**11/09/2018** All 5 sensors are confirmed to be working. Will follow PID roughly according to this tutorial:
+https://www.instructables.com/id/Line-Follower-Robot-PID-Control-Android-Setup/
+
