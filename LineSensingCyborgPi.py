@@ -13,13 +13,13 @@ class LineSensingCyborgPi(object):
         ##setting up the GPIOs for the IR sensors
         ##the numbering of the sensors aren't in sequence mainly due to which GPIO means are physically closest/convinient/neat
         ##to the sensors themselves
-        self.LLSensor = 24  # 1st sensor from the left
-        self.LSensor = 20  # 2nd sensor from the left
-        self.CSensor = 23  # sensor in the middle
-        self.RSensor = 21  # 2nd sensor from the right
-        self.RRSensor = 7  # 1st sensor from the right
+        self.LLSensor = 37  # 1st sensor from the left #no good 22 18 16 11 15 13
+        self.LSensor = 38 # 2nd sensor from the left
+        self.CSensor = 16  # sensor in the middle
+        self.RSensor = 40  # 2nd sensor from the right
+        self.RRSensor = 26  # 1st sensor from the right
 
-        IO.setmode(IO.BCM)
+        IO.setmode(IO.BOARD)
 
         IO.setup(self.LLSensor, IO.IN, pull_up_down=IO.PUD_UP)
         IO.setup(self.LSensor, IO.IN, pull_up_down=IO.PUD_UP)
