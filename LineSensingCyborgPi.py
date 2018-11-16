@@ -165,3 +165,7 @@ class LineSensingCyborgPi(object):
                 pass
             if self.rotating:
                 pass
+
+
+pi = LineSensingCyborgPi()
+pi.run()
