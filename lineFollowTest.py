@@ -8,5 +8,5 @@ bus = smbus.SMBus(channel)
 
 readByte = 0L
 while True:
-    readByte = bus.read_byte(address)
+    readByte = bus.read_byte(address,16)
     print readByte
