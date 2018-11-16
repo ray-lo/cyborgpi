@@ -135,7 +135,7 @@ class LineSensingCyborgPi(object):
     def linefollwing(self):
         self.readSensors()
         self.setError()
-        calculatePID()
+        self.calculatePID()
 
         if self.currentError == 99:
             self.linefollwing = False
