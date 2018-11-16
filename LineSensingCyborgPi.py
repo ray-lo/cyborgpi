@@ -115,8 +115,7 @@ class LineSensingCyborgPi(object):
             0b11111: 99
         }
         self.lastError = self.currentError
-        self.currentError = errorMap(self.readings,
-                                     self.currentError)  ##if the reading is weird and not in the dictionary, we
+        self.currentError = errorMap.get(self.readings, self.currentError)  ##if the reading is weird and not in the dictionary, we
         # default to last known error
 
 
