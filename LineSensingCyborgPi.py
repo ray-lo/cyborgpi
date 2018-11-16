@@ -85,13 +85,13 @@ class LineSensingCyborgPi(object):
         self.leftMotor.stop()
         self.rightMotor.stop()
 
-        def readSensors(self):
-            self.readings = 0b00000
-            self.readings = self.readings + (IO.input(self.LLSensor) << 4)
-            self.readings = self.readings + (IO.input(self.LSensor) << 3)
-            self.readings = self.readings + (IO.input(self.CSensor) << 2)
-            self.readings = self.readings + (IO.input(self.RSensor) << 1)
-            self.readings = self.readings + (IO.input(self.RRSensor) << 0)
+    def readSensors(self):
+        self.readings = 0b00000
+        self.readings = self.readings + (IO.input(self.LLSensor) << 4)
+        self.readings = self.readings + (IO.input(self.LSensor) << 3)
+        self.readings = self.readings + (IO.input(self.CSensor) << 2)
+        self.readings = self.readings + (IO.input(self.RSensor) << 1)
+        self.readings = self.readings + (IO.input(self.RRSensor) << 0)
 
         ##Convert the raw readings to a error that we will use for the PID
 
