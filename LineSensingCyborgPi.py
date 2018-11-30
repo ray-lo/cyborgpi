@@ -10,14 +10,14 @@ class LineSensingCyborgPi(object):
         self.speed = 70  ##this is the universal speed setting used for manual control, which can be varied from 0 to 100
         self.baseSpeed = 50  ##this is the base speed into the motor used for PID
 
-        self.stopSeconds(5)
+        self.stopSeconds = 5
 
         ##setting up the GPIOs for the IR sensors
         ##the numbering of the sensors aren't in sequence mainly due to which GPIO means are physically closest/convinient/neat
         ##to the sensors themselves
-        self.LLSensor = 31  # 1st sensor from the left #no good 22 18 16 11 15 13 33 35 37 36
+        self.LLSensor = 29  # 1st sensor from the left #no good 11 13 15 16 18 22 33 35 36 37 
         self.LSensor = 38 # 2nd sensor from the left
-        self.CSensor = 7  # sensor in the middle
+        self.CSensor = 19  # sensor in the middle
         self.RSensor = 40  # 2nd sensor from the right
         self.RRSensor = 26  # 1st sensor from the right
 
@@ -38,22 +38,32 @@ class LineSensingCyborgPi(object):
 
         ##Variables for PID
 
-        self.kP = 8
+        self.kP = 25
         self.kI = 0
-        self.kD = 3
+        self.kD = 15
         self.P = 0
         self.I = 0
         self.D = 0
 
         self.currentError = 0
         self.lastError = 0
-
+    
+    def forwardAndReverse(self, leftMotorInput, rightMotorInput):
+        if leftMotorInput >= 0:
+            self.leftMotor.forward(leftMotorInput)
+        else:
+            self.leftMotor.reverse((-1)* leftMotorInput)
+        if rightMotorInput >=0:
+            self.rightMotor.forward(rightMotorInput)
+        else:
+            self.rightMotor.reverse((-1)*rightMotorInput)
+    
     def pidForward(self):
         print "Left: ", self.baseSpeed + self.PID, " , right: ", self.baseSpeed - self.PID
-        leftMotorInput = min(100, max(0,self.baseSpeed + self.PID))
-        rightMotorInput = min(100, max(0,self.baseSpeed - self.PID))
-        self.leftMotor.forward(leftMotorInput)
-        self.rightMotor.forward(rightMotorInput)
+        leftMotorInput = min(100, max(-100,self.baseSpeed + self.PID))
+        rightMotorInput = min(100, max(-100, self.baseSpeed - self.PID))
+        self.forwardAndReverse(leftMotorInput, rightMotorInput)
+
     def forward(self):
         self.leftMotor.forward(self.speed)
         self.rightMotor.forward(self.speed)
@@ -101,21 +111,17 @@ class LineSensingCyborgPi(object):
 
     def setError(self):
         errorMap = {
-            0b00001: 4,
-            0b00011: 3,
-            0b00010: 2,
+            0b00001: 16,
+            0b00011: 9,
+            0b00010: 4,
             0b00110: 1,
             0b00100: 0,
             0b01100: -1,
-            0b01000: -2,
-            0b11000: -3,
-            0b10000: -4,
-            0b11110: 99,
-            0b11101: 99,  # if four or more sensors returned true, we consider there to be a horizontal "stop" line
-            0b11011: 99,
-            0b10111: 99,
-            0b01111: 99,
-            0b11111: 99
+            0b01000: -4,
+            0b11000: -9,
+            0b10000: -16,
+            0b11111: 99, ##stop on solid line
+            0b00000: -99 ##rotate when there is no line
         }
         self.lastError = self.currentError
         self.currentError = errorMap.get(self.readings, self.currentError)  ##if the reading is weird and not in the dictionary, we
@@ -134,16 +140,20 @@ class LineSensingCyborgPi(object):
         self.runOperate()
 
 
-    def linefollwing(self):
+    def linefollwingState(self):
         self.readSensors()
         self.setError()
         self.calculatePID()
-
+        print (format(self.readings, '05b'))
         if self.currentError == 99:
+            print("99 detected")
             self.linefollwing = False
             self.stopping = True
             return
-
+        if self.currentError == -99:
+            self.linefollowing = False
+            self.rotating = True
+            return
         self.pidForward()
         ##otherwise, we are still in linefollowing mode:
 
@@ -155,23 +165,32 @@ class LineSensingCyborgPi(object):
         self.exittingStop = True
 
 
-    def exittingStop(self):
+    def exittingStopState(self):
         self.forward()
         time.sleep(0.2)
         self.exittingStop = False
         self.linefollwing = True
+    
+    def rotatingState(self):
+        self.readSensors()
+        self.setError()
+        if (self.currentError != -99):
+            self.rotating = False
+            self.linefollowing = True
+            return
+        self.rotateLeft()
 
     def runOperate(self):
         self.linefollowing = True
         while (self.running):
             if self.linefollowing:
-                self.linefollwing()
+                self.linefollwingState()
             if self.stopping:
                 self.stoppingState()
             if self.exittingStop:
-                pass
+                self.exittingStopState()
             if self.rotating:
-                pass
+                self.rotatingState()
 
 
 pi = LineSensingCyborgPi()
