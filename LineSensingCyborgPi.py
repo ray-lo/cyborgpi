@@ -181,16 +181,21 @@ class LineSensingCyborgPi(object):
         self.rotateLeft()
 
     def runOperate(self):
-        self.linefollowing = True
-        while (self.running):
-            if self.linefollowing:
-                self.linefollwingState()
-            if self.stopping:
-                self.stoppingState()
-            if self.exittingStop:
-                self.exittingStopState()
-            if self.rotating:
-                self.rotatingState()
+        try:
+            self.linefollowing = True
+            while (self.running):
+                if self.linefollowing:
+                    self.linefollwingState()
+                if self.stopping:
+                    self.stoppingState()
+                if self.exittingStop:
+                    self.exittingStopState()
+                if self.rotating:
+                    self.rotatingState()
+        except KeyboardInterrupt:
+            print "Stopping robot"
+            self.stop()
+            sys.exit(0)
 
 
 pi = LineSensingCyborgPi()
