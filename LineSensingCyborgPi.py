@@ -7,9 +7,9 @@ class LineSensingCyborgPi(object):
     def __init__(self):
         self.rightMotor = PiMotor.Motor("MOTOR2", 1)
         self.leftMotor = PiMotor.Motor("MOTOR1", 2)
-        self.speed = 40   ##this is the universal speed setting used for manual control, which can be varied from 0 to 100
+        self.speed = 70   ##this is the universal speed setting used for manual control, which can be varied from 0 to 100
         self.baseSpeed = 50  ##this is the base speed into the motor used for PID
-
+        self.rotateSpeed = 40
         self.stopSeconds = 5
 
         ##setting up the GPIOs for the IR sensors
@@ -75,13 +75,13 @@ class LineSensingCyborgPi(object):
 
 
     def rotateLeft(self):
-        self.leftMotor.reverse(self.speed)
-        self.rightMotor.forward(self.speed)
+        self.leftMotor.reverse(self.rotateSpeed)
+        self.rightMotor.forward(self.rotateSpeed)
 
 
     def rotateRight(self):
-        self.leftMotor.forward(self.speed)
-        self.rightMotor.reverse(self.speed)
+        self.leftMotor.forward(self.rotateSpeed)
+        self.rightMotor.reverse(self.rotateSpeed)
 
 
     def left(self):
