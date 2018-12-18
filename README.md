@@ -17,3 +17,5 @@ I asked Deb to buy 5 SparkFun QRE1113 (digital) sensors for me. They are adverti
 
 **11/09/2018** All 5 sensors are confirmed to be working. Will follow PID roughly according to this tutorial:
 https://www.instructables.com/id/Line-Follower-Robot-PID-Control-Android-Setup/
+
+**12/17/2018** Added ctrl C to cancel robot. "sudo shutdown now" to shut at the end - RC
