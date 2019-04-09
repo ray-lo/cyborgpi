@@ -10,7 +10,7 @@ class LineSensingCyborgPi(object):
         self.speed = 70   ##this is the universal speed setting used for manual control, which can be varied from 0 to 100
         self.baseSpeed = 50  ##this is the base speed into the motor used for PID
         self.rotateSpeed = 40
-        self.stopSeconds = 5
+        self.stopSeconds = 20
 
         ##setting up the GPIOs for the IR sensors
         ##the numbering of the sensors aren't in sequence mainly due to which GPIO means are physically closest/convinient/neat
