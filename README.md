@@ -21,3 +21,5 @@ https://www.instructables.com/id/Line-Follower-Robot-PID-Control-Android-Setup/
 **12/17/2018** Added ctrl C to cancel robot. "sudo shutdown now" to shut at the end - RC
 
 **01/15/2019** 192.168.0.4 on Putty, "pi" and "RamanLab"
+
+**04/09/2019** Changed stopping time from 5s to 20s to get better odor readings
